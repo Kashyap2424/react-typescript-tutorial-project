@@ -1,9 +1,18 @@
-import React from 'react'
+import * as React from "react";
+import { Navbar, Container } from "react-bootstrap";
 
-function Headers() {
+interface IHeadersProps {}
+
+const Headers: React.FunctionComponent<IHeadersProps> = (props) => {
   return (
-    <div>Headers</div>
-  )
-}
+    <>
+      <Navbar fixed="top" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand>React Type-Script Tutorial</Navbar.Brand>
+        </Container>
+      </Navbar>
+    </>
+  );
+};
 
-export default Headers
+export default Headers;
