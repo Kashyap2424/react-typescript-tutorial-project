@@ -5,9 +5,10 @@ import { Notes } from "../model/note.model";
 
 interface INoteProps {
   note: Notes;
+  handleDelete: (id: String) => void;
 }
 
-const Note: React.FunctionComponent<INoteProps> = ({ note }) => {
+const Note: React.FunctionComponent<INoteProps> = ({ note, handleDelete }) => {
   return (
     <div className="mb-3">
       <Card style={{ backgroundColor: `${note.color}` }}>
@@ -15,7 +16,11 @@ const Note: React.FunctionComponent<INoteProps> = ({ note }) => {
           <Card.Title>{note.title}</Card.Title>
           <Card.Text>{note.description}</Card.Text>
           <Card.Subtitle className="text-muted">{note.time}</Card.Subtitle>
-          <Button className="mt-3" variant="danger">
+          <Button
+            className="mt-3"
+            variant="danger"
+            onClick={() => handleDelete(note.id)}
+          >
             Delete
           </Button>
         </Card.Body>
