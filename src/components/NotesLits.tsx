@@ -2,6 +2,7 @@ import * as React from "react";
 
 import Note from "./Note";
 import { Notes } from "../model/note.model";
+import { Alert } from "react-bootstrap";
 
 interface INotesListProps {
   Notes: Notes[];
@@ -16,7 +17,15 @@ const NotesList: React.FunctionComponent<INotesListProps> = ({
     setNotes(Notes.filter((note) => note.id !== id));
   };
 
-  const renderNotes = (): JSX.Element[] => {
+  const renderNotes = () => {
+    if (Notes.length === 0) {
+      return (
+        <Alert className="mt-4 mb-4" variant="danger">
+          Not Found Notes
+        </Alert>
+      );
+    }
+
     return Notes.map((note) => {
       return (
         <Note key={`${note.id}`} note={note} handleDelete={handleDelete} />
